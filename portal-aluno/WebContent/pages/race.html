@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+
+<head th:include="fragments/head"></head>
+
+<body class="page-header-fixed bg-1">
+
+	<div class="modal-shiftfix">
+
+		<div th:include="fragments/sidebar"></div>
+
+
+		<div class="container-fluid main-content">			
+		
+        <div class="page-title">
+          	 
+          <h1>
+            Corrida
+          </h1>
+                    
+        </div>
+        
+        
+        <!-- DataTables Example -->
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="widget-container fluid-height clearfix">
+            	<div th:if="${param.success != null}" class="alert alert-success" role="alert">Post salvo com sucesso!</div>
+	              <div class="heading" >                  
+	              	
+	              	<button  th:if="${!configuration.raceFinished}" class="btn btn-danger" onclick="finalizar(this);" style="float:right"><i class="fa fa-warning"></i>Finalizar Corrida e Exibir Pódio</button>
+	              	<button  th:if="${configuration.raceFinished}" class="btn btn-success" onclick="reativar(this);" style="float:right"><i class="fa fa-check"></i>Reativar Corrida</button>
+	              
+	              	<span>Ative ou desative participantes na corrida</span>         	                
+	              </div>
+              
+              <div class="widget-content padded clearfix" style="margin-top:30px">              	           	            
+                <table class="table table-bordered table-striped" id="dataTable1">
+                  <thead>
+                    <th>ID</th>
+                    <th>Competidor</th>
+                    <th>Status</th>                                                          
+                    <th></th>
+                  </thead>
+                  <tbody>
+                  
+                  	<tr th:each="summary: ${summaries}">
+						<td th:text="${summary.id}" class="hidden-xs"></td>
+						<td th:text="${summary.facebookPost.competitor.name + ' - ' + summary.facebookPost.competitor.serie}" class="hidden-xs"></td>
+						<td th:if="${summary.active}" class="hidden-xs" style="color:green">Ativo</td>
+						<td th:if="${!summary.active}" class="hidden-xs" style="color:red">Inativo</td>																							
+						<td class="actions">                        
+	                        <div class="action-buttons" style="text-align:center">
+	                        	<button th:if="${!summary.active}" th:id="${summary.id}" onclick="ativar(this);" class="btn btn-xs btn-success">Ativar</button>
+	                        	<button th:if="${summary.active}" th:id="${summary.id}" onclick="desativar(this);" class="btn btn-xs btn-danger">Desativar</button>	                          
+	                        </div>
+                      	</td>					
+					</tr>						
+                  	                                                                                                                                                                       
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end DataTables Example -->
+      </div>
+	</div>
+
+	<script type="text/javascript">
+		
+		function ativar(el) {
+			if (!confirm('Confirma a ativação deste competidor na corrida?'))
+				return;
+			
+			$.ajax({
+				url: '/race/activate',
+				type: 'post',
+				headers: {'Content-type': 'application/json'},
+				data: JSON.stringify({id: $(el).attr('id')}),
+				success: function () {
+					location = '';
+				}
+			});	
+		}
+		
+		function desativar(el) {
+			if (!confirm('Confirma a desativação deste competidor na corrida?'))
+				return;
+			
+			$.ajax({
+				url: '/race/deactivate',
+				type: 'post',
+				headers: {'Content-type': 'application/json'},
+				data: JSON.stringify({id: $(el).attr('id')}),
+				success: function () {
+					location = '';
+				}
+			});	
+		}
+		
+		function finalizar(el) {
+			if (!confirm('Confirma a finalização da corrida?'))
+				return;
+			
+			$.ajax({
+				url: '/race/finish',
+				type: 'post',
+				headers: {'Content-type': 'application/json'},
+				data: JSON.stringify({id: 0}),
+				success: function () {
+					location = '';
+				}
+			});	
+		}
+		
+		
+		function reativar(el) {
+			if (!confirm('Confirma a reativação da corrida?'))
+				return;
+			
+			$.ajax({
+				url: '/race/reactivate',
+				type: 'post',
+				headers: {'Content-type': 'application/json'},
+				data: JSON.stringify({id: 0}),
+				success: function () {
+					location = '';
+				}
+			});	
+		}
+		
+		
+		$('#race').attr('class', 'current');
+					
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:h = "http://java.sun.com/jsf/html">
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+
+<head>
+	<ui:include src="/fragments/head.xhtml" />
+</head>
+
+<body class="page-header-fixed bg-1">
+
+	<div class="modal-shiftfix">
+
+		<div>
+			<ui:include src="/fragments/sidebar.xhtml" />
+		</div>
+
+
+		<div class="container-fluid main-content">
+			<div class="page-title">
+				<h1>Cadastro de Curso</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="widget-container">
+																
+						<div class="heading">
+							<i class="fa fa-shield"></i>Informações do curso
+						</div>
+						<div class="widget-content padded">
+							<h:form>
+							
+								<input type="hidden" id="id" name="id" h:value="#{courseBean.course.id}"/>								
+													
+								<fieldset>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Nome</label>
+												<h:inputText 
+													class="form-control"
+													id="name" 
+													name="name" 
+													type="text"
+													h:value="#{courseBean.course.name}"/>		
+											</div>
+										</div>								
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Escola</label>
+												<h:selectOneMenu
+													class="form-control" 
+													value="#{courseBean.schoolId}">
+										   			<f:selectItems value="#{schoolBean.schools}" var="s"
+										   			itemLabel="#{s.name}" itemValue="#{s.id}" />
+										   		</h:selectOneMenu>		
+											</div>
+										</div>								
+									</div>
+									
+									<h:commandButton class="btn btn-success" action="#{courseBean.register}" value="Salvar"/>
+																		
+									<a class="btn btn-default" type="submit" href="courses.xhtml">Cancelar</a>
+									
+								</fieldset>
+								
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+			
+</body>
+
+	<script type="text/javascript">
+		$('#cursos').attr('class', 'current');
+	</script>
+
+</html>

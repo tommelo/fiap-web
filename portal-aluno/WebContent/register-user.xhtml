@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:c="http://java.sun.com/jsf/core"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h = "http://java.sun.com/jsf/html">
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+
+<head>
+	<ui:include src="/fragments/head.xhtml" />
+</head>
+
+<body class="page-header-fixed bg-1">
+
+	<div class="modal-shiftfix">
+
+		<div>
+			<ui:include src="/fragments/sidebar.xhtml" />
+		</div>
+
+
+		<div class="container-fluid main-content">
+			<div class="page-title">
+				<h1>Cadastro de Usuário</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="widget-container">
+											
+						
+						<div class="heading">
+							<i class="fa fa-shield"></i>Informações do usuário
+						</div>
+						<div class="widget-content padded">
+							<h:form>
+							
+								<input type="hidden" id="id" name="id" h:value="#{userBean.user.id}"/>								
+													
+								<fieldset>
+									<div class="row">
+										<div class="col-md-6">											
+											<div class="form-group">
+												<label for="name">Nome</label>
+												<h:inputText 
+													class="form-control"
+													id="firstName" 
+													name="firstName" 
+													type="text"
+													h:value="#{userBean.user.firstName}"/>		
+											</div>																					
+										</div>
+										<div class="col-md-6">											
+											<div class="form-group">
+												<label for="name">Sobrenome</label>
+												<h:inputText 
+													class="form-control"
+													id="lastName" 
+													name="lastName" 
+													type="text"
+													h:value="#{userBean.user.lastName}"/>		
+											</div>																					
+										</div>																		
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">											
+											<div class="form-group">
+												<label for="rm">RM</label>
+												<h:inputText 
+													class="form-control"
+													id="rm" 
+													name="rm" 
+													type="text"
+													h:value="#{userBean.user.rm}"/>		
+											</div>																					
+										</div>
+										<div class="col-md-6">											
+											<div class="form-group">
+												<label for="email">Email</label>
+												<h:inputText 
+													class="form-control"
+													id="email" 
+													name="email" 
+													type="text"
+													h:value="#{userBean.user.email}"/>		
+											</div>																					
+										</div>																		
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">											
+											<div class="form-group">
+												<label for="email">Senha</label>
+												<h:inputSecret 
+													class="form-control"
+													id="password" 
+													name="password" 													
+													h:value="#{userBean.user.password}"/>		
+											</div>																					
+										</div>
+									
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Regra</label>
+												<h:selectOneMenu
+													class="form-control" 
+													value="#{userBean.role}">
+													<f:selectItem itemValue="ADMIN" itemLabel="ADMIN" />
+													<f:selectItem itemValue="PROFESSOR" itemLabel="PROFESSOR" />
+													<f:selectItem itemValue="ALUNO" itemLabel="ALUNO" />										   			
+										   		</h:selectOneMenu>		
+											</div>
+										</div>								
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Curso</label>
+												<h:selectOneMenu
+													class="form-control" 
+													value="#{userBean.courseId}">
+										   			<f:selectItems value="#{courseBean.courses}" var="c"
+										   			itemLabel="#{c.name}" itemValue="#{c.id}" />
+										   		</h:selectOneMenu>		
+											</div>
+										</div>								
+									</div>
+									
+									<h:commandButton class="btn btn-success" action="#{userBean.register}" value="Salvar"/>
+																		
+									<a class="btn btn-default" type="submit" href="users.xhtml">Cancelar</a>
+									
+								</fieldset>
+								
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+			
+</body>
+
+	<script type="text/javascript">
+	$('#usuarios').attr('class', 'current');
+	</script>
+
+</html>

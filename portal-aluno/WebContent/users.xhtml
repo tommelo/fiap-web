@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:c="http://java.sun.com/jsf/core"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:h = "http://java.sun.com/jsf/html">
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+
+<head>
+	<ui:include src="/fragments/head.xhtml" />
+</head>
+
+<body class="page-header-fixed bg-1">
+	<div class="modal-shiftfix">
+		
+		<div>
+			<ui:include src="/fragments/sidebar.xhtml" />
+		</div>
+		
+
+		<div class="container-fluid main-content">
+			
+			<div class="page-title">          	 
+	          <h1>
+	            Usuários
+	          </h1>
+	         </div> 
+	          	          
+		        <div class="row">
+		          <div class="col-lg-12">
+		            <div class="widget-container fluid-height clearfix">
+		            	
+			              <div class="heading" >                  
+			              	<span>Lista de usuários</span>         
+			                <a class="btn btn-success" href="register-user.xhtml" style="float:right"><i class="fa fa-plus"></i>Adicionar Usuário</a>
+			              </div>
+		              
+		              <div class="widget-content padded clearfix" style="margin-top:30px">              	           	            
+		                <table class="table table-bordered table-striped" id="dataTable1">
+		                  <thead>
+		                    <th>ID</th>
+		                    <th>Nome</th>
+		                    <th>Sobrenome</th>
+		                    <th>RM</th>
+		                    <th>Curso</th>
+		                    <th>Regra</th>		                    		                    
+		                  </thead>
+		                  <tbody>
+		                         
+		                     <ui:repeat value="#{userBean.users}" var="user">
+					            
+					            <tr>
+									<td  class="hidden-xs">#{user.id}</td>
+									<td  class="hidden-xs">#{user.firstName}</td>
+									<td  class="hidden-xs">#{user.lastName}</td>
+									<td  class="hidden-xs">#{user.rm}</td>
+									<td  class="hidden-xs">#{user.course.name}</td>
+									<td  class="hidden-xs">#{user.role}</td>																					
+								</tr>	
+					            
+					        </ui:repeat>
+		                                                                                                                                                                             
+		                  </tbody>
+		                </table>
+		              </div>
+		            </div>
+		          </div>
+		        </div>	                   
+	        </div>
+
+
+		</div>
+				
+			
+</body>
+	<script type="text/javascript">
+		$('#usuarios').attr('class', 'current');
+	</script>
+</html>
+

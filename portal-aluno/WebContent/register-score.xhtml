@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:c="http://java.sun.com/jsf/core"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h = "http://java.sun.com/jsf/html">
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+
+<head>
+	<ui:include src="/fragments/head.xhtml" />
+</head>
+
+<body class="page-header-fixed bg-1">
+
+	<div class="modal-shiftfix">
+
+		<div>
+			<ui:include src="/fragments/sidebar.xhtml" />
+		</div>
+
+
+		<div class="container-fluid main-content">
+			<div class="page-title">
+				<h1>Avaliação de Aluno</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="widget-container">
+																
+						<div class="heading">
+							<i class="fa fa-shield"></i>Informações da avaliação
+						</div>
+						<div class="widget-content padded">
+							<h:form>
+							
+								<input type="hidden" id="id" name="id" h:value="#{scoreBean.score.id}"/>								
+													
+								<fieldset>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Aluno</label>
+												<h:selectOneMenu
+													class="form-control" 
+													value="#{scoreBean.studentId}">
+										   			<f:selectItems value="#{userBean.students}" var="c"
+										   			itemLabel="#{c.firstName.concat(' ').concat(c.lastName)}" itemValue="#{c.id}" />
+										   		</h:selectOneMenu>		
+											</div>
+										</div>								
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Disciplina</label>
+												<h:selectOneMenu
+													class="form-control" 
+													value="#{scoreBean.disciplineId}">
+										   			<f:selectItems value="#{disciplineBean.disciplines}" var="t"
+										   			itemLabel="#{t.name}" itemValue="#{t.id}" />
+										   		</h:selectOneMenu>		
+											</div>
+										</div>								
+									</div>
+								
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Nota - Projeto 1</label>
+												<h:selectOneMenu
+													class="form-control" 
+													value="#{scoreBean.projectOneScore}">
+													<f:selectItem itemValue="0" itemLabel="0" />
+													<f:selectItem itemValue="1" itemLabel="1" />
+													<f:selectItem itemValue="2" itemLabel="2" />
+													<f:selectItem itemValue="3" itemLabel="3" />
+													<f:selectItem itemValue="4" itemLabel="4" />
+													<f:selectItem itemValue="5" itemLabel="5" />
+													<f:selectItem itemValue="6" itemLabel="6" />
+													<f:selectItem itemValue="7" itemLabel="7" />
+													<f:selectItem itemValue="8" itemLabel="8" />
+													<f:selectItem itemValue="9" itemLabel="9" />
+													<f:selectItem itemValue="10" itemLabel="10" />										   			
+										   		</h:selectOneMenu>		
+											</div>
+										</div>								
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Nota - Projeto 2</label>
+												<h:selectOneMenu
+													class="form-control" 
+													value="#{scoreBean.projectTwoScore}">
+													<f:selectItem itemValue="0" itemLabel="0" />
+													<f:selectItem itemValue="1" itemLabel="1" />
+													<f:selectItem itemValue="2" itemLabel="2" />
+													<f:selectItem itemValue="3" itemLabel="3" />
+													<f:selectItem itemValue="4" itemLabel="4" />
+													<f:selectItem itemValue="5" itemLabel="5" />
+													<f:selectItem itemValue="6" itemLabel="6" />
+													<f:selectItem itemValue="7" itemLabel="7" />
+													<f:selectItem itemValue="8" itemLabel="8" />
+													<f:selectItem itemValue="9" itemLabel="9" />
+													<f:selectItem itemValue="10" itemLabel="10" />										   			
+										   		</h:selectOneMenu>		
+											</div>
+										</div>								
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label for="name">Nota - Atividade Prática</label>
+												<h:selectOneMenu
+													class="form-control" 
+													value="#{scoreBean.practicalActivityScore}">
+													<f:selectItem itemValue="0" itemLabel="0" />
+													<f:selectItem itemValue="1" itemLabel="1" />
+													<f:selectItem itemValue="2" itemLabel="2" />
+													<f:selectItem itemValue="3" itemLabel="3" />
+													<f:selectItem itemValue="4" itemLabel="4" />
+													<f:selectItem itemValue="5" itemLabel="5" />
+													<f:selectItem itemValue="6" itemLabel="6" />
+													<f:selectItem itemValue="7" itemLabel="7" />
+													<f:selectItem itemValue="8" itemLabel="8" />
+													<f:selectItem itemValue="9" itemLabel="9" />
+													<f:selectItem itemValue="10" itemLabel="10" />										   			
+										   		</h:selectOneMenu>		
+											</div>
+										</div>								
+									</div>
+									
+									<h:commandButton class="btn btn-success" action="#{scoreBean.register}" value="Salvar"/>
+																		
+									<a class="btn btn-default" type="submit" href="scores.xhtml">Cancelar</a>
+									
+								</fieldset>
+								
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+			
+</body>
+
+	<script type="text/javascript">
+	$('#notas').attr('class', 'current');
+	</script>
+
+</html>

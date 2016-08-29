@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:c="http://java.sun.com/jsf/core"
+	  xmlns:ui = "http://java.sun.com/jsf/facelets"
+	  xmlns:h = "http://java.sun.com/jsf/html">
+
+  <head>
+	<ui:include src="/fragments/head.xhtml" />
+  </head>
+	
+	<style>
+							
+		.login1 .login-container {
+			height: 320px !important; 
+		}
+		
+					
+		
+		
+	</style>	
+	<body class="login1">
+    <!-- Login Screen -->
+    <div class="login-wrapper">
+    	
+    	
+      <div class="login-container">
+                  
+      	      
+        <h1>
+          <a href="#">Portal do Aluno</a>
+        </h1>
+        
+        
+        
+        <h:form>
+           
+           <!-- 
+          <div class="alert alert-danger" role="alert">
+      		<h:message for="password"></h:message>
+      	  </div>
+      	  -->
+      	  
+      	  <h:messages style="color: red" globalOnly="false"/>
+      	       	
+          <div class="form-group">
+            <!--  <input class="form-control" id="user" name="user" placeholder="Email" type="text" maxlength="254"/>-->
+            <h:inputText class="form-control" id="user" name="user" placeholder="Email" type="text" maxlength="254" value="#{loginBean.login.user}"></h:inputText>
+          </div>
+          <div class="form-group">
+            <h:inputSecret class="form-control" id="password" name="password" placeholder="Senha" type="password" value="#{loginBean.login.password}"/>
+            <h:commandButton action="#{loginBean.login}" value="&#xf054;"/>
+          </div>          
+        </h:form>
+                
+      </div>
+    </div>
+    <!-- End Login Screen -->
+  </body>
+ 
+</html>

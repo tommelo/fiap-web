@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14723910251490" configfile="/portal-aluno/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf14724544225260" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14724544225261" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="scores.xhtml" id="pf14724544225262" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14724544225261" path="/scores.xhtml"/>
+  <links id="pf14724544225261" target="pf14724544225262" source="pf14724544225260" outcome="logged" redirect="true"/>
+</pageflow:Pageflow>

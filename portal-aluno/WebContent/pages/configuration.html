@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--[if IE 9 ]><html class="ie9"><![endif]-->
+
+<head th:include="fragments/head"></head>
+
+<body class="page-header-fixed bg-1">
+
+	<div class="modal-shiftfix">
+
+		<div th:include="fragments/sidebar"></div>
+
+
+		<div class="container-fluid main-content">
+			<div class="page-title">
+				<h1>Configurações</h1>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="widget-container">
+											
+						<div th:if="${success == false}" class="alert alert-danger" role="alert">Não foi possível atualizar as configurações</div>
+						<div th:if="${success == true}" class="alert alert-success" role="alert">Configurações atualizadas com sucesso</div>
+						
+						<div class="heading">						
+							<i class="fa fa-shield"></i>Informações de autenticação
+						</div>
+						<div class="widget-content padded">
+							<form th:action="@{/configurations}" th:object="${configuration}" method="POST" enctype="application/x-www-form-urlencoded">
+							
+								<input type="hidden" id="id" name="id" th:value="${configuration.id}">
+																							
+								<fieldset>
+									<div class="row">
+										<div class="col-md-6">
+																														
+											<div class="form-group">
+												<label for="description">Facebook Client ID</label>
+													<input
+													th:class="${#fields.hasErrors('facebookClientId') ? 'form-control error': 'form-control'}"
+													id="facebookClientId" name="facebookClientId"
+													type="text"
+													th:value="${configuration.facebookClientId}">
+													<label class="error" for="facebookClientId" th:if="${#fields.hasErrors('facebookClientId')}" th:errors="*{facebookClientId}"></label>
+											</div>
+											<div class="form-group">
+												<label for="pageId">Facebook Client Secret</label>
+												<input
+													th:class="${#fields.hasErrors('facebookClientSecret') ? 'form-control error': 'form-control'}" 
+													id="facebookClientSecret" name="facebookClientSecret"
+													type="text"
+													th:value="${configuration.facebookClientSecret}">
+													<label class="error" for="facebookClientSecret" th:if="${#fields.hasErrors('facebookClientSecret')}" th:errors="*{facebookClientSecret}"></label>
+											</div>
+											<div class="form-group">
+												<label for="city">Instagram ACCESS TOKEN</label>
+												<input
+													th:class="${#fields.hasErrors('instagramAccessToken') ? 'form-control error': 'form-control'}" 
+													id="instagramAccessToken" name="instagramAccessToken"
+													type="text"
+													th:value="${configuration.instagramAccessToken}">
+													<label class="error" for="postId" th:if="${#fields.hasErrors('instagramAccessToken')}" th:errors="*{instagramAccessToken}"></label>
+											</div>
+											
+											<div class="form-group">
+												<label for="city">Twitter Consumer Key</label>
+												<input
+													th:class="${#fields.hasErrors('twitterConsumerKey') ? 'form-control error': 'form-control'}" 
+													id="twitterConsumerKey" name="twitterConsumerKey"
+													type="text"
+													th:value="${configuration.twitterConsumerKey}">
+													<label class="error" for="postId" th:if="${#fields.hasErrors('twitterConsumerKey')}" th:errors="*{twitterConsumerKey}"></label>
+											</div>
+											
+											<div class="form-group">
+												<label for="city">Twitter Consumer Secret</label>
+												<input
+													th:class="${#fields.hasErrors('twitterConsumerSecret') ? 'form-control error': 'form-control'}" 
+													id="twitterConsumerSecret" name="twitterConsumerSecret"
+													type="text"
+													th:value="${configuration.twitterConsumerSecret}">
+													<label class="error" for="twitterConsumerSecret" th:if="${#fields.hasErrors('twitterConsumerSecret')}" th:errors="*{twitterConsumerSecret}"></label>
+											</div>
+											
+											<div class="form-group">
+												<label for="city">Twitter Token</label>
+												<input
+													th:class="${#fields.hasErrors('twitterToken') ? 'form-control error': 'form-control'}" 
+													id="twitterToken" name="twitterToken"
+													type="text"
+													th:value="${configuration.twitterToken}">
+													<label class="error" for="twitterToken" th:if="${#fields.hasErrors('twitterToken')}" th:errors="*{twitterToken}"></label>
+											</div>
+											
+											<div class="form-group">
+												<label for="city">Twitter Token Secret</label>
+												<input
+													th:class="${#fields.hasErrors('twitterTokenSecret') ? 'form-control error': 'form-control'}" 
+													id="twitterTokenSecret" name="twitterTokenSecret"
+													type="text"
+													th:value="${configuration.twitterTokenSecret}">
+													<label class="error" for="twitterTokenSecret" th:if="${#fields.hasErrors('twitterTokenSecret')}" th:errors="*{twitterTokenSecret}"></label>
+											</div>
+											
+											<div class="form-group">
+												<label for="city">Atualizar informações a cada(ms):</label>
+												<input
+													th:class="${#fields.hasErrors('threadSleep') ? 'form-control error': 'form-control'}" 
+													id="threadSleep" name="threadSleep"
+													type="text"
+													th:value="${configuration.threadSleep}">
+													<label class="error" for="threadSleep" th:if="${#fields.hasErrors('threadSleep')}" th:errors="*{threadSleep}"></label>
+											</div>
+											
+										</div>										
+									</div>
+									<input class="btn btn-info" type="submit" value="Salvar">									
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$('#configurations').attr('class', 'current');
+	</script>
+	
+</body>
+</html>
